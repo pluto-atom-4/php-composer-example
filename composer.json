@@ -1,0 +1,11 @@
+{
+    "require": {
+        "adambrett/shell-wrapper": "0.5",
+        "phpunit/phpunit": "4.4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Example\\": "src"
+        }
+    }
+}
