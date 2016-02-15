@@ -10,16 +10,20 @@ namespace Example\Command;
 
 require 'vendor/autoload.php';
 
-use AdamBrett\ShellWrapper\Command\Builder as CommandBuilder;
+use AdamBrett\ShellWrapper\Command;
+use AdamBrett\ShellWrapper\Command\AbstractCommand;
+use AdamBrett\ShellWrapper\Command\Argument;
+use AdamBrett\ShellWrapper\Command\Flag;
+use AdamBrett\ShellWrapper\Command\Param;
+use AdamBrett\ShellWrapper\Command\SubCommand;
 
 class CommandEcho
 {
     private $command; /*  = new Command(); */
-    private $param = "";
 
     function __construct()
     {
-        $command = new CommandBuilder('echo');
+        $this->command = new Command('echo');
     }
 
     /**
@@ -35,19 +39,8 @@ class CommandEcho
      */
     public function setParam($param)
     {
-        $this->param = $param;
+        $this->command->addParam(new Param($param));
         return $this;
-    }
-
-    public function compose()
-    {
-        $this->command->addParam($this->param);
-        return $this;
-    }
-
-    public function get()
-    {
-        return $this->command;
     }
 
 }
